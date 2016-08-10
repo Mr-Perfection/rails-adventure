@@ -58,19 +58,21 @@ To go all the way back to the beginning, we can use
   $ rails db:migrate VERSION=0
 ```
 
-* System dependencies
+To run the test cases...
+```
+rails test #check test/controllers/*
+#advanced setup
+bundle exec guard init # will  monitors changes in the filesystem so that only those tests get run
+#in order to avoid conflicts btw git and spring, just add spring/ directory in the .gitignore
+# Ignore Spring files.
+#/spring/*.pid
+```
+Kill the spring processes if tests are running sluggishly
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+```
+ps aux #see all the processes running in unix
+ps aux | grep spring #see all processes named spring
+kill -15 $(first 5 digit number)
+spring stop
+pkill -15 -f spring
+```
