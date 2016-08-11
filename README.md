@@ -60,12 +60,18 @@ To go all the way back to the beginning, we can use
 
 To run the test cases...
 ```
-rails test #check test/controllers/*
+rails test                  #check test/controllers/*
 #advanced setup
-bundle exec guard init # will  monitors changes in the filesystem so that only those tests get run
-#in order to avoid conflicts btw git and spring, just add spring/ directory in the .gitignore
-# Ignore Spring files.
-#/spring/*.pid
+bundle exec guard init       # will  monitors changes in the filesystem so that only those tests get run
+                            #in order to avoid conflicts btw git and spring, just add spring/ directory in the .gitignore
+                            # Ignore Spring files.
+                            #/spring/*.pid
+
+rails generate integration_test site_layout         #integration test for:
+                                                    #Get the root path (Home page).
+                                                    #Verify that the right page template is rendered.
+                                                    #Check for the correct links to the Home, Help, About, and Contact pages.
+rails test:integration                              #Command to test just integration
 ```
 Kill the spring processes if tests are running sluggishly
 
@@ -75,4 +81,10 @@ ps aux | grep spring #see all processes named spring
 kill -15 $(first 5 digit number)
 spring stop
 pkill -15 -f spring
+```
+Asset directories
+```
+app/assets: assets specific to the present application
+lib/assets: assets for libraries written by your dev team
+vendor/assets: assets from third-party vendors
 ```
