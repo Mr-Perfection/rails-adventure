@@ -13,13 +13,6 @@ To get started with the app, clone the repo and then install the needed gems:
 ```
 $ bundle install --without production
 ```
-
-Next, migrate the database:
-
-```
-$ rails db:migrate
-```
-
 Finally, run the test suite to verify that everything is working correctly:
 
 ```
@@ -48,6 +41,8 @@ $ rails server -b $IP -p $PORT    # Use `rails server` if running locally.
 Migrations change the state of the database using the command
 ```
 $ rails db:migrate
+$ rails generate migration add_index_to_users_email         #create an index as user's email for user data
+$ rails generate migration add_password_digest_to_users password_digest:string          #password_digest is hashed password. Need to be kept for authentication
 ```
 We can undo a single migration step using
 ```
@@ -87,4 +82,9 @@ Asset directories
 app/assets: assets specific to the present application
 lib/assets: assets for libraries written by your dev team
 vendor/assets: assets from third-party vendors
+```
+Email Regex
+```
+VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+Test with http://www.rubular.com/
 ```
