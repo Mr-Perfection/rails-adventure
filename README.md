@@ -92,7 +92,17 @@ Email Regex
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 Test with http://www.rubular.com/
 ```
-Rails Console
+Security
+```
+#SSL in production to encrypt all relevant information before it leaves the local browser
+
+# Force all access to the app over SSL, use Strict-Transport-Security,
+  # and use secure cookies. In production.rb.
+  config.force_ssl = true
+
 ```
 
+Puma
+```
+$ bundle exec puma -C config/puma.rb
 ```
