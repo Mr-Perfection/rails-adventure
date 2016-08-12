@@ -36,11 +36,14 @@ $ rails destroy model User
 Rails server
 ```
 $ rails server -b $IP -p $PORT    # Use `rails server` if running locally.
+ $ rails server --environment production        #run the server based on environment
+ $ rails db:migrate RAILS_ENV=production        #create a production database for production environment
 ```
 
 Migrations change the state of the database using the command
 ```
 $ rails db:migrate
+$ rails db:migrate:reset                #to clear all the datbases
 $ rails generate migration add_index_to_users_email         #create an index as user's email for user data
 $ rails generate migration add_password_digest_to_users password_digest:string          #password_digest is hashed password. Need to be kept for authentication
 ```
@@ -66,6 +69,7 @@ rails generate integration_test site_layout         #integration test for:
                                                     #Get the root path (Home page).
                                                     #Verify that the right page template is rendered.
                                                     #Check for the correct links to the Home, Help, About, and Contact pages.
+rails generate integration_test users_signup
 rails test:integration                              #Command to test just integration
 ```
 Kill the spring processes if tests are running sluggishly
@@ -87,4 +91,8 @@ Email Regex
 ```
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 Test with http://www.rubular.com/
+```
+Rails Console
+```
+
 ```
