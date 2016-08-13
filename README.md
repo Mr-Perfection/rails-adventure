@@ -30,6 +30,7 @@ Generate && destroy elements
 $ rails generate controller StaticPages home help
 $ rails destroy  controller StaticPages home help
 $ rails generate model User name:string email:string
+$ rails generate controller Sessions new #create controller for sessions
 $ rails destroy model User
 
 ```
@@ -71,7 +72,9 @@ rails generate integration_test site_layout         #integration test for:
                                                     #Check for the correct links to the Home, Help, About, and Contact pages.
 rails generate integration_test users_signup
 rails test:integration                              #Command to test just integration
-```
+@user = users(:michael)                             #test with users.yml to test against the user cases. Tested with user fixture. (test/fixtures/users.yml)
+                                                    #check test/integration/users_login_test.rb
+``` 
 Kill the spring processes if tests are running sluggishly
 
 ```
@@ -105,4 +108,9 @@ Security
 Puma
 ```
 $ bundle exec puma -C config/puma.rb
+```
+
+Debug
+```
+debugger
 ```
