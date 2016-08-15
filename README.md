@@ -121,3 +121,12 @@ Debug
 ```
 debugger
 ```
+
+Deploy
+```
+$ heroku maintenance:on
+$ git push heroku
+$ heroku run rake db:migrate
+$ heroku maintenance:off
+
+```
