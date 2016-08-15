@@ -8,6 +8,11 @@ application up and running.
 
 ## Getting started
 
+Go to this heroku website to check out
+```
+desolate-plateau-53347.herokuapp.com        #real app
+https://rails-pratice-stephen42.c9users.io  #test app w/ cloudIDE
+```
 To get started with the app, clone the repo and then install the needed gems:
 
 ```
@@ -47,6 +52,8 @@ $ rails db:migrate
 $ rails db:migrate:reset                #to clear all the datbases
 $ rails generate migration add_index_to_users_email         #create an index as user's email for user data
 $ rails generate migration add_password_digest_to_users password_digest:string          #password_digest is hashed password. Need to be kept for authentication
+$ rails generate migration add_remember_digest_to_users remember_digest:string          #remember_digest is basically create a cookie so that user can
+                                                                                        #be still signed in.
 ```
 We can undo a single migration step using
 ```
