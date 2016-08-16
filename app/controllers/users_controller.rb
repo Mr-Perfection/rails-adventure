@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update]   #will prevent the unauthorized users from modifying the user's data
   def new
     @user = User.new
   end
