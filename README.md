@@ -41,9 +41,9 @@ $ rails destroy model User
 ```
 Rails server
 ```
-$ rails server -b $IP -p $PORT    # Use `rails server` if running locally.
- $ rails server --environment production        #run the server based on environment
- $ rails db:migrate RAILS_ENV=production        #create a production database for production environment
+$ rails server -b $IP -p $PORT                  # Use `rails server` if running locally.
+$ rails server --environment production         # run the server based on environment
+$ rails db:migrate RAILS_ENV=production         # create a production database for production environment
 ```
 
 Migrations change the state of the database using the command
@@ -81,6 +81,7 @@ rails generate integration_test users_signup
 rails test:integration                              #Command to test just integration
 @user = users(:michael)                             #test with users.yml to test against the user cases. Tested with user fixture. (test/fixtures/users.yml)
                                                     #check test/integration/users_login_test.rb
+$ rails generate integration_test users_edit        #create an integration test for edit profile page
 ``` 
 Kill the spring processes if tests are running sluggishly
 
@@ -120,6 +121,13 @@ $ bundle exec puma -C config/puma.rb
 Debug
 ```
 debugger
+```
+
+Git
+```
+$ git add .
+$ git branch $(new branch)
+$ git branch -d $(current branch)
 ```
 
 Deploy
