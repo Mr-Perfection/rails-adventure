@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]   #will prevent the unauthorized users from modifying the user's data
+  before_action :logged_in_user,  only: [:edit, :update]    #will prevent the unauthorized user from modifying the user's data without log in.
+  before_action :correct_user,    only: [:edit, :update]    #will only allow correct user to modify his/her profile.
   def new
     @user = User.new
   end
@@ -39,11 +40,18 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
   
-  #confirms a logged-in user
+  # before filters
+  # confirms a logged-in user
   def logged_in_user
-    unless logged_in?
+    unless logged_in?   #this is equivalent to if !logged_in?
       flash[:danger] = "Please log in."
       redirect_to login_url
     end
+  end
+  
+  # confirms the correct user
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to root_url unless current_user?(@user)   #redirect if logged in user is not current user
   end
 end

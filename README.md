@@ -24,12 +24,6 @@ Finally, run the test suite to verify that everything is working correctly:
 $ rails test
 ```
 
-If the test suite passes, you'll be ready to run the app in a local server:
-
-```
-$ rails server
-```
-
 Generate && destroy elements
 ```
 $ rails generate controller StaticPages home help
@@ -41,7 +35,8 @@ $ rails destroy model User
 ```
 Rails server
 ```
-$ rails server -b $IP -p $PORT                  # Use `rails server` if running locally.
+$ rails server                                  # use if using local server
+$ rails server -b $IP -p $PORT                  # Use `rails server` if running locally with Cloud IDE
 $ rails server --environment production         # run the server based on environment
 $ rails db:migrate RAILS_ENV=production         # create a production database for production environment
 ```
