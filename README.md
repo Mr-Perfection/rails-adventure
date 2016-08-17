@@ -123,6 +123,14 @@ Git
 $ git add .
 $ git branch $(new branch)
 $ git branch -d $(current branch)
+$ git checkout master 	#switch to branch ‘master’
+$ git merge $(name)	#merge!
+$ git branch -d $(name)	#delete the branch or clean up!
+$ git branch -D $(name)	#delete the branceh though havent merged in the changes.
+$ git reset --hard HEAD~1	#reset the master origin to one previous commit.
+$ git diff $(branch) HEAD~#(number of commits before...)
+$ git diff --staged #one that has been added.
+$ git push -u origin $(topic or branch name)
 ```
 
 Deploy

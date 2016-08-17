@@ -54,7 +54,7 @@ module SessionsHelper
     # such as /edit or /update, it will store that url and after login redirect back to it or go to default url)
     def redirect_back_or(default)
         redirect_to(session[:forwarding_url] || default)
-        session.delete(:forwarding_url)
+        session.delete(:forwarding_url)     #delete what is stored.
     end
     
     # stores the URL trying to be accessed

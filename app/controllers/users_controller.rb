@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user,  only: [:edit, :update]    #will prevent the unauthorized user from modifying the user's data without log in.
+  before_action :logged_in_user,  only: [:index ,:edit, :update]    #will prevent the unauthorized user from modifying the user's data without log in.
   before_action :correct_user,    only: [:edit, :update]    #will only allow correct user to modify his/her profile.
+  
+  def index
+    @users = User.all
+  end
+  
   def new
     @user = User.new
   end
@@ -15,7 +20,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user #logged in as user upon sign up
       flash[:success] = "Welcome to the Sample App!"
-      redirect_back_or @user #redirect to the user profile
+      redirect_to @user #redirect to the user profile
     else
       render 'new' #if failed, render sign up page
     end
