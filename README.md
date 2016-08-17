@@ -58,7 +58,6 @@ To go all the way back to the beginning, we can use
 ```
   $ rails db:migrate VERSION=0
 ```
-
 To run the test cases...
 ```
 rails test                  #check test/controllers/*
@@ -77,6 +76,11 @@ rails test:integration                              #Command to test just integr
 @user = users(:michael)                             #test with users.yml to test against the user cases. Tested with user fixture. (test/fixtures/users.yml)
                                                     #check test/integration/users_login_test.rb
 $ rails generate integration_test users_edit        #create an integration test for edit profile page
+
+#test with the multiple users
+# make sure to stop the server first if it is running.
+$ rails db:migrate:reset #runs db:drop db:create db:migrate
+$ rails db:seed
 ``` 
 Kill the spring processes if tests are running sluggishly
 
