@@ -18,7 +18,7 @@ class ActiveSupport::TestCase
     session[:user_id] = user.id
   end
 end
-
+ 
 class ActionDispatch::IntegrationTest
 
   # Log in as a particular user.

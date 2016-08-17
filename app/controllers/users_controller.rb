@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user #logged in as user upon sign up
       flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user #redirect to the user profile
+      redirect_back_or @user #redirect to the user profile
     else
       render 'new' #if failed, render sign up page
     end
@@ -41,9 +41,11 @@ class UsersController < ApplicationController
   end
   
   # before filters
+
   # confirms a logged-in user
   def logged_in_user
-    unless logged_in?   #this is equivalent to if !logged_in?
+    unless logged_in?   #this is equivalent to if !logged_in? or user is not logged in
+      store_location    #session help method that stores the accessed url
       flash[:danger] = "Please log in."
       redirect_to login_url
     end

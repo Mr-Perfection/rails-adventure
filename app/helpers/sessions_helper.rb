@@ -49,4 +49,18 @@ module SessionsHelper
         session.delete(:user_id) #delte the session
         @current_user = nil #set the variable to nil value
     end
+    
+    # redirects to stored location (or to the default) for friendly forwarding (when user first tried to have access to forbidden urls
+    # such as /edit or /update, it will store that url and after login redirect back to it or go to default url)
+    def redirect_back_or(default)
+        redirect_to(session[:forwarding_url] || default)
+        session.delete(:forwarding_url)
+    end
+    
+    # stores the URL trying to be accessed
+    # puts the requested URL in the session variable with the key :fowarding_url only for a GET request
+    # including if request.get? prevents storing the forwaring URL if a user submits a form when not logged in (or cleared cookies).
+    def store_location
+        session[:forwarding_url] = request.original_url if request.get?
+    end
 end
