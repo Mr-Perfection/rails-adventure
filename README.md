@@ -28,8 +28,9 @@ Generate && destroy elements
 ```
 $ rails generate controller StaticPages home help
 $ rails destroy  controller StaticPages home help
-$ rails generate model User name:string email:string
 $ rails generate controller Sessions new #create controller for sessions
+$ rails generate controller AccountActivations
+$ rails generate model User name:string email:string
 $ rails destroy model User
 
 ```
@@ -50,6 +51,9 @@ $ rails generate migration add_password_digest_to_users password_digest:string  
 $ rails generate migration add_remember_digest_to_users remember_digest:string          #remember_digest is basically create a cookie so that user can
                                                                                         #be still signed in.
 $ rails generate migration add_admin_to_users admin:boolean                             #add boolean admin column
+
+$ rails generate migration add_activation_to_users \
+> activation_digest:string activated:boolean activated_at:datetime              #this will add three attributes in the model
 ```
 We can undo a single migration step using
 ```
@@ -153,8 +157,12 @@ Deploy
 ```
 $ heroku maintenance:on
 $ git push heroku
-$ heroku run rake db:migrate
+$ heroku run rails db:migrate
 $ heroku maintenance:off
+
+$ heroku pg:reset DATABASE      #reset database
+$ heroku run rails db:seed
+$ heroku restart
 
 ```
 Console
