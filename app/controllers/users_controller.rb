@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user,  only: [:index ,:edit, :update]    #will prevent the unauthorized user from modifying the user's data without log in.
+  before_action :logged_in_user,  only: [:index ,:edit, :update, :destroy]    #will prevent the unauthorized user from modifying the user's data without log in.
   before_action :correct_user,    only: [:edit, :update]    #will only allow correct user to modify his/her profile.
-  
+  before_action :admin_user,      only: :destroy
   def index
     @users = User.paginate(page: params[:page])   #page param comes from "will_paginate" and it will display 30 users (by default) per page.
   end
@@ -40,6 +40,12 @@ class UsersController < ApplicationController
     end
   end
   
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_path
+  end
+  
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)    #only allow certain attributes to update/add
@@ -60,5 +66,9 @@ class UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     redirect_to root_url unless current_user?(@user)   #redirect if logged in user is not current user
+  end
+  
+  def admin_user
+    redirect_to root_path unless current_user.admin?
   end
 end

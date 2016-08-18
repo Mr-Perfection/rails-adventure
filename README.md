@@ -142,7 +142,13 @@ $ git diff $(branch) HEAD~#(number of commits before...)
 $ git diff --staged #one that has been added.
 $ git push -u origin $(topic or branch name)
 ```
-
+Git problems
+```
+error:Updates were rejected because the tip of your current branch is behind
+$ git fetch
+$ git pull origin master
+$ git push -u origin master
+```
 Deploy
 ```
 $ heroku maintenance:on

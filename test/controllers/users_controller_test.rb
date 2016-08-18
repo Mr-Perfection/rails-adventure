@@ -58,4 +58,20 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert flash.empty? #should not be empty. logged in as different user!
     assert_redirected_to root_url
   end
+  
+  test "should redirect destroy if not logged-in" do
+    assert_no_difference 'User.count' do
+      delete user_path(@user)
+    end
+    assert_redirected_to login_path
+  end
+  
+  test "should redirect destroy if not admin" do
+    log_in_as @other_user
+    
+    assert_no_difference 'User.count' do
+      delete user_path(@user)
+    end
+    assert_redirected_to root_path
+  end
 end
