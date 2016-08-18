@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user,    only: [:edit, :update]    #will only allow correct user to modify his/her profile.
   
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])   #page param comes from "will_paginate" and it will display 30 users (by default) per page.
   end
   
   def new

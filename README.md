@@ -77,6 +77,8 @@ rails test:integration                              #Command to test just integr
                                                     #check test/integration/users_login_test.rb
 $ rails generate integration_test users_edit        #create an integration test for edit profile page
 
+$ rails generate integration_test users_index       #test index page of users_controller
+
 #test with the multiple users
 # make sure to stop the server first if it is running.
 $ rails db:migrate:reset #runs db:drop db:create db:migrate
