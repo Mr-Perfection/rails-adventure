@@ -49,6 +49,7 @@ $ rails generate migration add_index_to_users_email         #create an index as 
 $ rails generate migration add_password_digest_to_users password_digest:string          #password_digest is hashed password. Need to be kept for authentication
 $ rails generate migration add_remember_digest_to_users remember_digest:string          #remember_digest is basically create a cookie so that user can
                                                                                         #be still signed in.
+$ rails generate migration add_admin_to_users admin:boolean                             #add boolean admin column
 ```
 We can undo a single migration step using
 ```
@@ -83,6 +84,9 @@ $ rails generate integration_test users_index       #test index page of users_co
 # make sure to stop the server first if it is running.
 $ rails db:migrate:reset #runs db:drop db:create db:migrate
 $ rails db:seed
+
+#reverse the boolean value in console
+user.toggle!(:admin)
 ``` 
 Kill the spring processes if tests are running sluggishly
 
@@ -146,4 +150,8 @@ $ git push heroku
 $ heroku run rake db:migrate
 $ heroku maintenance:off
 
+```
+Console
+```
+rails console --sandbox #too laggy somehow
 ```
