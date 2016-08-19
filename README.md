@@ -170,3 +170,11 @@ Console
 ```
 rails console --sandbox #too laggy somehow
 ```
+
+Emails with Heroku
+```
+$ heroku addons:create sendgrid:starter
+$ heroku config:get SENDGRID_USERNAME
+$ heroku config:get SENDGRID_PASSWORD
+
+```
