@@ -32,6 +32,7 @@ $ rails generate controller Sessions new #create controller for sessions
 $ rails generate controller AccountActivations
 $ rails generate model User name:string email:string
 $ rails destroy model User
+$ rails generate mailer UserMailer account_activation password_reset        #mailer controller
 
 ```
 Rails server

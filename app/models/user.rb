@@ -27,10 +27,12 @@ class User < ApplicationRecord
         update_attribute(:remember_digest, User.digest(remember_token))
     end
     
-    # returns true if the given token matches the digest
-    def authenticated?(remember_token)
-        return false if remember_digest.nil?        #if remember digest is empty, then return false which means not authenticated and need re-login.
-        BCrypt::Password.new(remember_digest).is_password?(remember_token)      #renew the remember_digest with new password
+    
+    # returns true if the given token matches the digest (remember_digest, activation_digest)
+    def authenticated?(attribute, token)
+        digest = self.send("#{attribute}_digest")
+        return false if digest.nil?
+        BCrypt::Password.new(digest).is_password?(token)        #renew the remember_digest with new password
     end
     
     # forget the user by setting nil to remember digest

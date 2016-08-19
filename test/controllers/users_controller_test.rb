@@ -74,4 +74,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to root_path
   end
+  
+  test "should authenticate the user if given token matches the digest" do
+    log_in_as @user
+    @user.remember
+    assert  @user.authenticated?(:remember, @user.remember_token )
+    assert  @user.authenticated?(:activation, 'password' )
+  end
 end

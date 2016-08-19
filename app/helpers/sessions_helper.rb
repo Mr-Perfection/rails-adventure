@@ -24,7 +24,7 @@ module SessionsHelper
         elsif (user_id = cookies.signed[:user_id])        #if session exists then asssign user id.
         
             user = User.find_by(id: user_id)        #assign user matched with user id
-            if user && user.authenticated?(cookies[:remember_token])    #check if user exists and user authenticated with the cookies remember token
+            if user && user.authenticated?(:remember, cookies[:remember_token])    #check if user exists and user authenticated with the cookies remember token
                 log_in user     #log in as user
                 @current_user = user        #store user into current user variable
             end

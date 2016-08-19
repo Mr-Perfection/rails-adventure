@@ -1,0 +1,9 @@
+<h1>HanaList</h1>
+<p><%=@greeting %>,</p>
+<p>
+  Welcome to HanaList! Click on the link below to activate your account:
+</p>
+</br>
+<p>
+    <%= link_to "Activate", edit_account_activation_url(@user.email, email: @user.email) %>
+</p>
