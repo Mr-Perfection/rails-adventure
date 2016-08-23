@@ -50,7 +50,7 @@ $ rails db:migrate:reset                #to clear all the datbases
 $ rails generate migration add_index_to_users_email         #create an index as user's email for user data
 $ rails generate migration add_password_digest_to_users password_digest:string          #password_digest is hashed password. Need to be kept for authentication
 $ rails generate migration add_remember_digest_to_users remember_digest:string          #remember_digest is basically create a cookie so that user can
-                                                                                        #be still signed in.
+$ rails generate controller PasswordResets new edit --no-test-framework                 #not including tests for controllers but instead build on top of existing tests                                                                             #be still signed in.
 $ rails generate migration add_admin_to_users admin:boolean                             #add boolean admin column
 
 $ rails generate migration add_activation_to_users \
@@ -85,6 +85,8 @@ $ rails generate integration_test users_edit        #create an integration test 
 
 $ rails generate integration_test users_index       #test index page of users_controller
 
+$ rails generate migration add_reset_to_users reset_digest:string \
+> reset_sent_at:datetime                            #modify the users data model and add reset_digest and reset_sent_at by generating migration
 #test with the multiple users
 # make sure to stop the server first if it is running.
 $ rails db:migrate:reset #runs db:drop db:create db:migrate
@@ -139,6 +141,7 @@ $ git add .
 $ git branch $(new branch)
 $ git branch -d $(current branch)
 $ git checkout master 	#switch to branch ‘master’
+$ git checkout -b $(branch name) #create new branch and go to it.
 $ git merge $(name)	#merge!
 $ git branch -d $(name)	#delete the branch or clean up!
 $ git branch -D $(name)	#delete the branceh though havent merged in the changes.
