@@ -53,7 +53,6 @@ class PasswordResetsController < ApplicationController
       redirect_to root_url
     end
   end
-  
   # check if the password reset has been expired or not
   def check_expiration
     if @user.password_reset_expired?
