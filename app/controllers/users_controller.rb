@@ -52,7 +52,6 @@ class UsersController < ApplicationController
   end
   
   # before filters
-
   # confirms a logged-in user
   def logged_in_user
     unless logged_in?   #this is equivalent to if !logged_in? or user is not logged in

@@ -84,6 +84,9 @@ rails test:integration                              #Command to test just integr
 $ rails generate integration_test users_edit        #create an integration test for edit profile page
 
 $ rails generate integration_test users_index       #test index page of users_controller
+$ rails generate integration_test password_resets   #test invalid or valid submissions
+
+
 
 $ rails generate migration add_reset_to_users reset_digest:string \
 > reset_sent_at:datetime                            #modify the users data model and add reset_digest and reset_sent_at by generating migration
