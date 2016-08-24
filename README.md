@@ -88,7 +88,7 @@ $ rails generate integration_test users_edit        #create an integration test 
 
 $ rails generate integration_test users_index       #test index page of users_controller
 $ rails generate integration_test password_resets   #test invalid or valid submissions
-$ rails generate integration_test users_profile
+$ rails generate integration_test users_profile     #generate an integration test for the profiles of our site’s users
 
 
 $ rails generate migration add_reset_to_users reset_digest:string \
