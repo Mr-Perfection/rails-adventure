@@ -33,8 +33,9 @@ $ rails generate controller AccountActivations
 $ rails generate model User name:string email:string
 $ rails destroy model User
 $ rails generate mailer UserMailer account_activation password_reset        #mailer controller
-
-```
+$ rails generate model Micropost content:text user:references       #content is text type because string is limited to 255 characters
+                                                                    #user is referenced to demonstrate belong_to relation
+``` 
 Rails server
 ```
 $ rails server                                  # use if using local server
