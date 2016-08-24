@@ -30,6 +30,8 @@ $ rails generate controller StaticPages home help
 $ rails destroy  controller StaticPages home help
 $ rails generate controller Sessions new #create controller for sessions
 $ rails generate controller AccountActivations
+$ rails generate controller PasswordResets new edit --no-test-framework                 #not including tests for controllers but instead build on top of existing tests                         #be still signed in.
+$ rails generate controller Microposts
 $ rails generate model User name:string email:string
 $ rails destroy model User
 $ rails generate mailer UserMailer account_activation password_reset        #mailer controller
@@ -86,12 +88,15 @@ $ rails generate integration_test users_edit        #create an integration test 
 
 $ rails generate integration_test users_index       #test index page of users_controller
 $ rails generate integration_test password_resets   #test invalid or valid submissions
-
+$ rails generate integration_test users_profile
 
 
 $ rails generate migration add_reset_to_users reset_digest:string \
 > reset_sent_at:datetime                            #modify the users data model and add reset_digest and reset_sent_at by generating migration
-#test with the multiple users
+
+$ rails test test/models/micropost_test.rb \
+>            --name test_order_should_be_most_recent_first      #test the most recent post should be the first.
+
 # make sure to stop the server first if it is running.
 $ rails db:migrate:reset #runs db:drop db:create db:migrate
 $ rails db:seed
