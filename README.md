@@ -17,6 +17,7 @@ To get started with the app, clone the repo and then install the needed gems:
 
 ```
 $ bundle install --without production
+$ bundle exec guard init
 ```
 Finally, run the test suite to verify that everything is working correctly:
 
@@ -37,6 +38,7 @@ $ rails destroy model User
 $ rails generate mailer UserMailer account_activation password_reset        #mailer controller
 $ rails generate model Micropost content:text user:references       #content is text type because string is limited to 255 characters
                                                                     #user is referenced to demonstrate belong_to relation
+rails generate uploader Picture     #CarrierWave adds a Rails generator for creating an image uploader
 ``` 
 Rails server
 ```
@@ -58,6 +60,8 @@ $ rails generate migration add_admin_to_users admin:boolean                     
 
 $ rails generate migration add_activation_to_users \
 > activation_digest:string activated:boolean activated_at:datetime              #this will add three attributes in the model
+
+$ rails generate migration add_picture_to_microposts picture:string     #add picture attribute to the microposts
 ```
 We can undo a single migration step using
 ```
