@@ -81,4 +81,7 @@ class User < ApplicationRecord
         self.activation_token = User.new_token
         self.activation_digest = User.digest(activation_token)
     end
+    
+    # Defines a proto-feed.
+    # See "Following users" for the full implementation.
 end
