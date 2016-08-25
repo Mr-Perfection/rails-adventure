@@ -89,7 +89,10 @@ $ rails generate integration_test users_edit        #create an integration test 
 $ rails generate integration_test users_index       #test index page of users_controller
 $ rails generate integration_test password_resets   #test invalid or valid submissions
 $ rails generate integration_test users_profile     #generate an integration test for the profiles of our site’s users
-
+$ rails generate integration_test microposts_interface
+#integration test to log in, check the micropost pagination, 
+#make an invalid submission, make a valid submission, delete a post, 
+#and then visit a second user’s page to make sure there are no “delete” links.
 
 $ rails generate migration add_reset_to_users reset_digest:string \
 > reset_sent_at:datetime                            #modify the users data model and add reset_digest and reset_sent_at by generating migration
