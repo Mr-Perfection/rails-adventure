@@ -197,3 +197,48 @@ $ heroku config:get SENDGRID_USERNAME
 $ heroku config:get SENDGRID_PASSWORD
 
 ```
+
+Installs
+```
+#Installing ImageMagick to resize the images before displaying.
+
+#Cloud IDE
+$ sudo apt-get update
+$ sudo apt-get install imagemagick --fix-missing
+
+#Local machine
+$ brew install imagemagick
+```
+
+Setting Up Amazon S3 for fog storage
+```
+$ heroku config:set S3_ACCESS_KEY=<access key>
+$ heroku config:set S3_SECRET_KEY=<secret key>
+$ heroku config:set S3_BUCKET=<bucket name>
+```
+
+Git Ignore
+```
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore Byebug command history file.
+.byebug_history
+
+## Ignore Spring files.
+/spring/*.pid
+
+# Ignore uploaded test images.
+/public/uploads
+
+```
