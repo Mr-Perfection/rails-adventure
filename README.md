@@ -6,12 +6,12 @@
 
 * Ruby version : 5.0.0
 ## Go to this heroku website to check out
-```
+
 [Twitter Clone](desolate-plateau-53347.herokuapp.com)
 [Testing](https://rails-pratice-stephen42.c9users.io)  #test app w/ cloudIDE
 
-```
 
+![Alt text](/demo.png?raw=true "from this project")
 
 
 ## To get started with the app
